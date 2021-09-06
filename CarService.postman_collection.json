@@ -11,19 +11,13 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "juan",
-							"type": "text"
-						},
-						{
-							"key": "surname",
-							"value": "rodriguez 2",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Jose\",\r\n    \"surname\":\"Aston\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{base_url}}owners",
@@ -57,6 +51,145 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "cars",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"owner\": 1,\r\n    \"brand\": \"Hyundai\",\r\n    \"model\": \"i30\",\r\n    \"year\": 2011,\r\n    \"plate\": \"AB 222 CD\",\r\n    \"colour\": \"negro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}cars",
+					"host": [
+						"{{base_url}}cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cars{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"owner\": 1,\r\n    \"brand\": \"Chevrolet\",\r\n    \"model\": \"Pickup\",\r\n    \"year\": 2016,\r\n    \"plate\": \"AB 222 CD\",\r\n    \"colour\": \"negro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}cars/20",
+					"host": [
+						"{{base_url}}cars"
+					],
+					"path": [
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cars?term=AB 222 CD&limit=30&page=1",
+					"host": [
+						"{{base_url}}cars"
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "AB 222 CD"
+						},
+						{
+							"key": "limit",
+							"value": "30"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cars/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cars/2",
+					"host": [
+						"{{base_url}}cars"
+					],
+					"path": [
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cars/{id}/services",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"car\": 3,\r\n    \"services\": [\r\n        {\r\n            \"id\": 1\r\n        },\r\n        {\r\n            \"id\": 3\r\n        },\r\n        {\r\n            \"id\": 4\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}cars/2/services",
+					"host": [
+						"{{base_url}}cars"
+					],
+					"path": [
+						"2",
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cars/{id}/services",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cars/2/services",
+					"host": [
+						"{{base_url}}cars"
+					],
+					"path": [
+						"2",
+						"services"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -82,7 +215,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "http://172.20.4.173/public/index.php/api/v1/"
+			"value": "http://localhost/api/v1/"
 		}
 	]
 }

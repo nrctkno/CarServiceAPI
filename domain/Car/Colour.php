@@ -4,25 +4,42 @@ declare(strict_types=1);
 
 namespace Domain\Car;
 
+use Domain\Common\Exception\ModelException;
+
 class Colour
 {
 
-    public static function isValid(int $value): bool
+    public static $colours = [
+        'rojo',
+        'blanco',
+        'negro',
+        'gris plata',
+        'gris oscuro',
+        'azul marino',
+        'azul metalizado',
+        'amarillo',
+    ];
+
+    public static function isValid(string $value): bool
     {
-        return $value > 1890
-            && $value <= ((int) date('Y') + 1);
+        return in_array($value, self::$colours);
     }
 
-    function __construct(private int $value)
+    public static function fromScalar(string $value)
     {
-        if (!self::isValid($value)) {
-            throw new ValidationExce('Invalid year format: ' . $value);
-        }
-        $this->value = $value;
+        return new self($value);
     }
 
     function __toString(): string
     {
         return (string) $this->value;
+    }
+
+    private function __construct(private string $value)
+    {
+        if (!self::isValid($value)) {
+            throw new ModelException('Invalid colour: ' . $value);
+        }
+        $this->value = $value;
     }
 }

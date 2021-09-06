@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Domain\Owner\Job;
+namespace Domain\Car\Job;
 
 use Domain\Common\Collection\PaginatedQueryResult;
 use Domain\Common\Exception\InputException;
-use Domain\Owner\Port\OwnerReader;
+use Domain\Car\Port\CarReader;
 
 final class Find
 {
@@ -14,7 +14,7 @@ final class Find
     const MAX_SIZE = 100;
 
     function __construct(
-        private OwnerReader $reader
+        private CarReader $reader
     ) {
         $this->reader = $reader;
     }

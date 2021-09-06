@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Adapter\Owner;
 
-use Domain\Common\Collection\PaginatedResultset;
+
 use Domain\Owner\Owner;
 use Domain\Owner\Port\OwnerRepository;
 
@@ -13,26 +13,16 @@ class AppOwnerRepository implements OwnerRepository
 
     function get(int $id): ?Owner
     {
-        return null;
-    }
+        $data = $this->table()->find($id);
 
-    function find(string $term, int $page, int $limit): PaginatedResultset
-    {
-        $offset = ($page - 1) * $limit;
+        $entity = Owner::hydrate(
+            $data->id,
+            \DateTime::createFromFormat('Y-m-d H:i:s', $data->created_at),
+            $data->name,
+            $data->surname
+        );
 
-        $query = $this->table()
-            ->where('name', 'like', "%$term%")
-            ->orWhere('surname', 'like', "%$term%");
-
-        $count = $query->count();
-
-        $records = $query
-            ->orderBy('surname', 'ASC')
-            ->orderBy('name', 'ASC')
-            ->skip($offset)->take($limit)
-            ->get()->toArray();
-
-        return new PaginatedResultset($records, $page, $limit, $count);
+        return $entity;
     }
 
     function save(Owner $entity): Owner

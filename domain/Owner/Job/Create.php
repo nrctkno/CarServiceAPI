@@ -16,8 +16,14 @@ final class Create
         $this->repository = $repository;
     }
 
-    function __invoke(Owner $owner)
+    function __invoke(string $name, string $surname): Owner
     {
+        $owner = Owner::new(
+            new \DateTime('now'),
+            $name,
+            $surname
+        );
+
         $this->repository->save($owner);
         if (is_null($owner->id())) {
             throw new \Exception('Could not create owner.');

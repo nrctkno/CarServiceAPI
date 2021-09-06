@@ -30,6 +30,16 @@ class Owner implements JsonSerializable
         return new self(null, $created_at, $name, $surname);
     }
 
+    public static function hydrate(
+        int $id,
+        \DateTime $created_at,
+        string $name,
+        string $surname
+    ) {
+        return new self($id, $created_at, $name, $surname);
+    }
+
+
     function id(): ?int
     {
         return $this->id;

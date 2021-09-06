@@ -6,7 +6,7 @@ namespace Domain\Common\Collection;
 
 use JsonSerializable;
 
-class PaginatedResultset implements JsonSerializable
+class PaginatedQueryResult implements JsonSerializable
 {
 
     function __construct(
@@ -41,10 +41,10 @@ class PaginatedResultset implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'records' => $this->records,
             'page' => $this->page,
             'limit' => $this->limit,
-            'count' => $this->count
+            'count' => $this->count,
+            'records' => $this->records
         ];
     }
 }

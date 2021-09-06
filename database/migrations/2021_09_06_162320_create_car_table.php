@@ -19,7 +19,7 @@ class CreateCarTable extends Migration
             $table->unsignedBigInteger('owner');
             $table->string('brand', 20);
             $table->string('model', 20);
-            $table->tinyInteger('year', false, true);
+            $table->smallInteger('year', false, true);
             $table->string('plate', 9);
             $table->string('colour', 20);
 

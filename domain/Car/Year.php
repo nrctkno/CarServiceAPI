@@ -9,22 +9,27 @@ use Domain\Common\Exception\ModelException;
 class Year
 {
 
+    public static function fromScalar(int $value)
+    {
+        return new self($value);
+    }
+
     public static function isValid(int $value): bool
     {
         return $value > 1890
             && $value <= ((int) date('Y') + 1);
     }
 
-    function __construct(private int $value)
+    function __toString(): string
+    {
+        return (string) $this->value;
+    }
+
+    private function __construct(private int $value)
     {
         if (!self::isValid($value)) {
             throw new ModelException('Invalid year format: ' . $value);
         }
         $this->value = $value;
-    }
-
-    function __toString(): string
-    {
-        return (string) $this->value;
     }
 }
