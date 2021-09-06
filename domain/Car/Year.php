@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Car;
 
+use Domain\Common\Exception\ModelException;
+
 class Year
 {
 
@@ -16,7 +18,7 @@ class Year
     function __construct(private int $value)
     {
         if (!self::isValid($value)) {
-            throw new DomainException('Invalid year format: ' . $value);
+            throw new ModelException('Invalid year format: ' . $value);
         }
         $this->value = $value;
     }

@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "ce0e2f08-de1b-48f6-b6b7-8207b162872f",
+		"name": "CarService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "owners",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "juan",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "rodriguez 2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}owners",
+					"host": [
+						"{{base_url}}owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "owners",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}owners?page=1&limit=10",
+					"host": [
+						"{{base_url}}owners"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://172.20.4.173/public/index.php/api/v1/"
+		}
+	]
+}

@@ -11,6 +11,7 @@ class Car
 
     function __construct(
         private Owner $owner,
+        private \DateTime $created_at,
         private string $brand,
         private string $model,
         private Year $year,
@@ -18,6 +19,7 @@ class Car
         private Colour $colour,
     ) {
         $this->owner = $owner;
+        $this->created_at = $created_at;
         $this->brand = $brand;
         $this->model = $model;
         $this->year = $year;

@@ -16,7 +16,7 @@ class Colour
     function __construct(private int $value)
     {
         if (!self::isValid($value)) {
-            throw new DomainException('Invalid year format: ' . $value);
+            throw new ValidationExce('Invalid year format: ' . $value);
         }
         $this->value = $value;
     }
