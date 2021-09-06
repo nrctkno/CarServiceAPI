@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Domain\Car\Job;
 
 use Domain\Car\Port\CarRepository;
-use Domain\Common\Exception\ModelException;
+use Domain\Common\Exception\ModelNotFoundException;
 use Domain\Owner\Port\OwnerRepository;
 
 final class Delete
@@ -24,7 +24,7 @@ final class Delete
         $car = $this->repository->get($id);
 
         if (is_null($car)) {
-            throw new ModelException('Could not find car ' . $id);
+            throw new ModelNotFoundException('Could not find car #' . $id);
         }
 
         $this->repository->delete($car);

@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Domain\Common\Exception\UserException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
@@ -49,6 +50,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof UserException) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $exception->getMessage()
+            ], 400);
+        }
+
         return parent::render($request, $exception);
     }
 }

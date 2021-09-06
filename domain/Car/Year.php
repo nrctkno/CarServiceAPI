@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Car;
 
-use Domain\Common\Exception\ModelException;
+use Domain\Common\Exception\InvalidScalarException;
 
 class Year
 {
@@ -28,7 +28,7 @@ class Year
     private function __construct(private int $value)
     {
         if (!self::isValid($value)) {
-            throw new ModelException('Invalid year format: ' . $value);
+            throw new InvalidScalarException('Invalid year format: ' . $value);
         }
         $this->value = $value;
     }

@@ -20,7 +20,7 @@ cp .env.example .env
 
 ```
 docker-compose up
-docker-compose run app php artisan migrate
+docker-compose exec app php artisan migrate
 ```
 
 - Navigate to your host, i.e. http://localhost/api/v1/owners/
@@ -37,7 +37,6 @@ docker-compose exec db bash
 
 ## Pending
 
-- Add exception handler to convert the domain exceptions to HTTP 403 error responses.
 - Car services and service details aggregate / methods.
 - All Entity fields should be value objects (remaining strings/integers): this enables domain-based validation.
 - Unit & Feature Testing

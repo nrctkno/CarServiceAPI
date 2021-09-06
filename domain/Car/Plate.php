@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Car;
 
-use Domain\Common\Exception\ModelException;
+use Domain\Common\Exception\InvalidScalarException;
 
 class Plate
 {
@@ -28,7 +28,7 @@ class Plate
     private function __construct(private string $value)
     {
         if (!self::isValid($value)) {
-            throw new ModelException('Invalid plate format: ' . $value);
+            throw new InvalidScalarException('Invalid plate format: ' . $value);
         }
         $this->value = strtoupper($value);
     }

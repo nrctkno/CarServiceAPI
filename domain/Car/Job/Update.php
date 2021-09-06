@@ -9,7 +9,7 @@ use Domain\Car\Colour;
 use Domain\Car\Plate;
 use Domain\Car\Year;
 use Domain\Car\Port\CarRepository;
-use Domain\Common\Exception\ModelException;
+use Domain\Common\Exception\ModelNotFoundException;
 use Domain\Owner\Port\OwnerRepository;
 
 final class Update
@@ -34,7 +34,7 @@ final class Update
     ) {
         $car = $this->repository->get($id);
         if (is_null($car)) {
-            throw new ModelException('Could not find car ' . $id);
+            throw new ModelNotFoundException('Could not find car #' . $id);
         }
 
         $owner = $this->ownerRepository->get($owner_id);

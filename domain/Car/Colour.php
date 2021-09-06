@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Car;
 
-use Domain\Common\Exception\ModelException;
+use Domain\Common\Exception\InvalidScalarException;
 
 class Colour
 {
@@ -38,7 +38,7 @@ class Colour
     private function __construct(private string $value)
     {
         if (!self::isValid($value)) {
-            throw new ModelException('Invalid colour: ' . $value);
+            throw new InvalidScalarException('Invalid colour: ' . $value);
         }
         $this->value = $value;
     }

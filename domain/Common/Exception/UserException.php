@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Common\Exception;
 
-class InputException extends UserException
+abstract class UserException extends DomainException
 {
 }

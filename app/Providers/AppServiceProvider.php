@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
         $portsAndAdapters = [
             'Car\Port\CarRepository' => 'Car\AppCarRepository',
             'Car\Port\CarReader' => 'Car\AppCarReader',
+            'Car\Port\CarServiceRepository' => 'Car\AppCarServiceRepository',
             'Owner\Port\OwnerRepository' => 'Owner\AppOwnerRepository',
             'Owner\Port\OwnerReader' => 'Owner\AppOwnerReader',
         ];
