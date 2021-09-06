@@ -34,9 +34,9 @@ class AppCarRepository implements CarRepository
             \DateTime::createFromFormat('Y-m-d H:i:s', $data->created_at),
             $data->brand,
             $data->model,
-            Year::fromScalar($data->year),
-            Plate::fromScalar($data->plate),
-            Colour::fromScalar($data->colour),
+            Year::new($data->year),
+            Plate::new($data->plate),
+            Colour::new($data->colour),
         );
 
         return $entity;

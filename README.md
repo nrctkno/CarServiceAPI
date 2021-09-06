@@ -1,6 +1,6 @@
 # Car Service API
 
-Example API to manage maintainance services for vehicles.
+Example Laravel/Lumen API to manage maintainance services for vehicles.
 
 ## Key concepts /ADR
 
@@ -33,7 +33,6 @@ docker-compose exec app php artisan migrate
 docker-compose exec app bash
 docker-compose exec db bash
 ```
-
 
 ## Pending
 

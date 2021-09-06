@@ -10,7 +10,7 @@ class CarService
 {
 
     /**
-     * @var ServiceDetail[] $details
+     * @var CarServiceDetail[] $details
      */
     private $details;
 
@@ -34,7 +34,7 @@ class CarService
         return $this->created_at;
     }
 
-    function addDetail(ServiceDetail $detail): void
+    function addDetail(CarServiceDetail $detail): void
     {
         $detail->setService($this);
         $this->details[] = $detail;

@@ -25,7 +25,7 @@ class Colour
         return in_array($value, self::$colours);
     }
 
-    public static function fromScalar(string $value)
+    public static function new(string $value)
     {
         return new self($value);
     }

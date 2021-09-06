@@ -9,7 +9,7 @@ use Domain\Common\Exception\InvalidScalarException;
 class Year
 {
 
-    public static function fromScalar(int $value)
+    public static function new(int $value)
     {
         return new self($value);
     }

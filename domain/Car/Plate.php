@@ -9,7 +9,7 @@ use Domain\Common\Exception\InvalidScalarException;
 class Plate
 {
 
-    public static function fromScalar(string $value)
+    public static function new(string $value)
     {
         return new self($value);
     }

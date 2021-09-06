@@ -30,7 +30,7 @@ class CarServiceDetail
         return $this->amount;
     }
 
-    function setService(Service $service): void
+    function setService(CarService $service): void
     {
         $this->service = $service;
     }

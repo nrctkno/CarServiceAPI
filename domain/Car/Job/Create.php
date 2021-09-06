@@ -38,9 +38,9 @@ final class Create
             new \DateTime('now'),
             $brand,
             $model,
-            Year::fromScalar($year),
-            Plate::fromScalar($plate),
-            Colour::fromScalar($colour)
+            Year::new($year),
+            Plate::new($plate),
+            Colour::new($colour)
         );
 
         $this->repository->save($car);
