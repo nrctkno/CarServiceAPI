@@ -29,7 +29,6 @@ final class Create
         int $car_id,
         array $service_ids
     ) {
-
         $car = $this->carRepository->get($car_id);
 
         $car_service = CarService::new(
@@ -47,6 +46,10 @@ final class Create
             $car_service->addDetail(
                 new CarServiceDetail($service_type)
             );
+        }
+
+        if (count($car_service->details()) == 0) {
+            throw new InputException('No services were added to the car service');
         }
 
         $this->repository->save($car_service);

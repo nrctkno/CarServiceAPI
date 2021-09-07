@@ -16,9 +16,11 @@ class CreateCarServiceDetailTable extends Migration
         Schema::create('car_service_detail', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('car_service');
+            $table->unsignedBigInteger('type');
             $table->decimal('amount', 8, 2, true);
 
             $table->foreign('car_service')->references('id')->on('car_service');
+            $table->foreign('type')->references('id')->on('service_type');
         });
     }
 

@@ -10,7 +10,7 @@ use JsonSerializable;
 class CarServiceDetail implements JsonSerializable
 {
 
-    private CarService $service;
+    private CarService $carService;
 
     function __construct(
         private ServiceType $type
@@ -29,14 +29,14 @@ class CarServiceDetail implements JsonSerializable
         return $this->amount;
     }
 
-    function service(): CarService
+    function carService(): CarService
     {
-        return $this->service;
+        return $this->carService;
     }
 
-    function setService(CarService $service): void
+    function setCarService(CarService $carService): void
     {
-        $this->service = $service;
+        $this->carService = $carService;
     }
 
     function jsonSerialize()

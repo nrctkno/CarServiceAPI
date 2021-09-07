@@ -23,6 +23,12 @@ class AppCarServiceRepository implements CarServiceRepository
             $entity->setId($id);
 
             foreach ($entity->details() as $detail) {
+
+                $this->detailsTable()->insertGetId([
+                    'car_service' => $detail->carService()->id(),
+                    'type' => $detail->type()->id(),
+                    'amount' => $detail->amount()
+                ]);
             }
         });
 
@@ -32,5 +38,10 @@ class AppCarServiceRepository implements CarServiceRepository
     protected function table()
     {
         return app('db')->table('car_service');
+    }
+
+    protected function detailsTable()
+    {
+        return app('db')->table('car_service_detail');
     }
 }

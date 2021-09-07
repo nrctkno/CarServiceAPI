@@ -49,7 +49,7 @@ class CarService implements JsonSerializable
 
     function addDetail(CarServiceDetail $detail): void
     {
-        $detail->setService($this);
+        $detail->setCarService($this);
         $this->details[] = $detail;
     }
 
