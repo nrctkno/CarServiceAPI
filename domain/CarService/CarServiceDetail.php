@@ -4,34 +4,46 @@ declare(strict_types=1);
 
 namespace Domain\CarService;
 
-class CarServiceDetail
+use Domain\ServiceType\ServiceType;
+use JsonSerializable;
+
+class CarServiceDetail implements JsonSerializable
 {
 
-    private Service $service;
+    private CarService $service;
 
     function __construct(
-        private int $amount
+        private ServiceType $type
     ) {
-        $this->amount = $amount;
+        $this->type = $type;
+        $this->amount = $type->cost();
     }
 
-    function price(): int
+    function type(): ServiceType
     {
-        return $this->price;
+        return $this->type;
     }
 
-    function service(): Service
-    {
-        return $this->service;
-    }
-
-    function amount(): int
+    function amount(): float
     {
         return $this->amount;
+    }
+
+    function service(): CarService
+    {
+        return $this->service;
     }
 
     function setService(CarService $service): void
     {
         $this->service = $service;
+    }
+
+    function jsonSerialize()
+    {
+        return [
+            'type' => $this->type,
+            'amount' => $this->amount,
+        ];
     }
 }

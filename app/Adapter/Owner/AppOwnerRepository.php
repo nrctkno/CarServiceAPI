@@ -15,6 +15,10 @@ class AppOwnerRepository implements OwnerRepository
     {
         $data = $this->table()->find($id);
 
+        if (is_null($data)) {
+            return null;
+        }
+
         $entity = Owner::hydrate(
             $data->id,
             \DateTime::createFromFormat('Y-m-d H:i:s', $data->created_at),

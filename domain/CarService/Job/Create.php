@@ -6,16 +6,22 @@ namespace Domain\CarService\Job;
 
 use Domain\Car\Port\CarRepository;
 use Domain\CarService\CarService;
+use Domain\CarService\CarServiceDetail;
 use Domain\CarService\Port\CarServiceRepository;
+use Domain\Common\Exception\InputException;
+use Domain\Common\Exception\WorkflowException;
+use Domain\ServiceType\Port\ServiceTypeRepository;
 
 final class Create
 {
 
     function __construct(
         private CarServiceRepository $repository,
+        private ServiceTypeRepository $typeRepository,
         private CarRepository $carRepository
     ) {
         $this->repository = $repository;
+        $this->typeRepository = $typeRepository;
         $this->carRepository = $carRepository;
     }
 
@@ -32,14 +38,22 @@ final class Create
         );
 
         foreach ($service_ids as $service_id) {
-            $car->addService();
+            $service_type = $this->typeRepository->get($service_id);
+
+            if (is_null($service_type)) {
+                throw new InputException('Invalid service #' . $service_id);
+            }
+
+            $car_service->addDetail(
+                new CarServiceDetail($service_type)
+            );
         }
 
         $this->repository->save($car_service);
-        if (is_null($car->id())) {
-            throw new \Exception('Could not create car service.');
+        if (is_null($car_service->id())) {
+            throw new WorkflowException('Could not create car service.');
         }
 
-        return $car;
+        return $car_service;
     }
 }

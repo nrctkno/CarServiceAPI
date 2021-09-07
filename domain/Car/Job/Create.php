@@ -9,6 +9,8 @@ use Domain\Car\Colour;
 use Domain\Car\Plate;
 use Domain\Car\Year;
 use Domain\Car\Port\CarRepository;
+use Domain\Common\Exception\InputException;
+use Domain\Common\Exception\WorkflowException;
 use Domain\Owner\Port\OwnerRepository;
 
 final class Create
@@ -33,6 +35,10 @@ final class Create
 
         $owner = $this->ownerRepository->get($owner_id);
 
+        if (is_null($owner)) {
+            throw new InputException('Invalid owner #' . $owner_id);
+        }
+
         $car = Car::new(
             $owner,
             new \DateTime('now'),
@@ -45,7 +51,7 @@ final class Create
 
         $this->repository->save($car);
         if (is_null($car->id())) {
-            throw new \Exception('Could not create car.');
+            throw new WorkflowException('Could not create car.');
         }
         return $car;
     }

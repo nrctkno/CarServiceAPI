@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Owner\Job;
 
+use Domain\Common\Exception\WorkflowException;
 use Domain\Owner\Owner;
 use Domain\Owner\Port\OwnerRepository;
 
@@ -26,7 +27,7 @@ final class Create
 
         $this->repository->save($owner);
         if (is_null($owner->id())) {
-            throw new \Exception('Could not create owner.');
+            throw new WorkflowException('Could not create owner.');
         }
         return $owner;
     }

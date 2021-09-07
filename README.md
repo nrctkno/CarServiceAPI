@@ -21,6 +21,7 @@ cp .env.example .env
 ```
 docker-compose up
 docker-compose exec app php artisan migrate
+docker-compose exec app php artisan db:seed
 ```
 
 - Navigate to your host, i.e. http://localhost/api/v1/owners/

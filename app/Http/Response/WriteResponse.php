@@ -15,7 +15,7 @@ class WriteResponse
     public static function with(JsonSerializable $data, string $status): array
     {
         if (!self::validateStatus($status)) {
-            throw new \Exception('Invalid reponse status: ' . $status);
+            throw new \Exception('Invalid response status: ' . $status);
         }
 
         return [

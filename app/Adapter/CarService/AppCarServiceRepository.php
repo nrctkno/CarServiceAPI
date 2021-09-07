@@ -16,7 +16,8 @@ class AppCarServiceRepository implements CarServiceRepository
 
             $id = $this->table()->insertGetId([
                 'car' => $entity->car()->id(),
-                'created_at' => $entity->createdAt()
+                'created_at' => $entity->createdAt(),
+                'total' => $entity->total()
             ]);
 
             $entity->setId($id);
