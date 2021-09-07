@@ -18,7 +18,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
             $router->delete('/', ['as' => 'car_delete', 'uses' => 'Car\Delete']);
 
             $router->group(['prefix' => 'services'], function () use ($router) {
-                $router->get('/', ['as' => 'service_get', 'uses' => 'CarService\Find']);
+                $router->get('/', ['as' => 'service_get', 'uses' => 'CarService\GetByCar']);
                 $router->post('/', ['as' => 'service_post', 'uses' => 'CarService\Create']);
             });
         });

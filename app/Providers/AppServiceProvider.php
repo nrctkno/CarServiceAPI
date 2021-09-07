@@ -10,11 +10,12 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $portsAndAdapters = [
-            'Car\Port\CarRepository' => 'Car\AppCarRepository',
             'Car\Port\CarReader' => 'Car\AppCarReader',
+            'Car\Port\CarRepository' => 'Car\AppCarRepository',
+            'CarService\Port\CarServiceReader' => 'CarService\AppCarServiceReader',
             'CarService\Port\CarServiceRepository' => 'CarService\AppCarServiceRepository',
-            'Owner\Port\OwnerRepository' => 'Owner\AppOwnerRepository',
             'Owner\Port\OwnerReader' => 'Owner\AppOwnerReader',
+            'Owner\Port\OwnerRepository' => 'Owner\AppOwnerRepository',
             'ServiceType\Port\ServiceTypeRepository' => 'ServiceType\AppServiceTypeRepository',
         ];
 
