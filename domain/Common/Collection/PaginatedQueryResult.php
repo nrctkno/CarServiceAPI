@@ -41,8 +41,11 @@ class PaginatedQueryResult implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'page' => $this->page,
-            'limit' => $this->limit,
+            'pages' => [
+                'current' => $this->page,
+                'limit' => $this->limit,
+                'total' => ceil($this->count / $this->limit),
+            ],
             'count' => $this->count,
             'records' => $this->records
         ];

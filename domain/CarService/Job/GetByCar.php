@@ -30,6 +30,7 @@ final class GetByCar
         if ($size > self::MAX_SIZE) {
             throw new InputException('Allowed maximum page size is ' . self::MAX_SIZE);
         }
+
         return $this->reader->getByCarId($car_id, $page, $size);
     }
 }

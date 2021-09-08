@@ -38,6 +38,6 @@ docker-compose exec db bash
 ## Pending
 
 - i18n: replace localized terms by keys (car colours, car services) and add an agnostic translator layer.
-- Discuss about the cars/{id}/services endpoints: although the URL structure is coherent, an alternative may be to flattern it to /services so that it could be independent of car entities.
+- Discuss about the cars/{id}/services endpoints: although the URL structure is coherent, an alternative may be to flattern it to /services so that it could be more independent of car entities.
 - All Entity fields should be value objects (remaining strings/integers): this enables domain-based validation.
 - Unit & Feature Testing
