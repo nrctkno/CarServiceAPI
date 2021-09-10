@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Car\Job;
 
-use Domain\Common\Collection\PaginatedQueryResult;
 use Domain\Common\Exception\InputException;
 use Domain\Car\Port\CarReader;
+use Domain\Car\Collection\CarsPaginatedQueryResult;
 
 final class Find
 {
@@ -19,7 +19,7 @@ final class Find
         $this->reader = $reader;
     }
 
-    function __invoke(string $term, int $page, int $size): PaginatedQueryResult
+    function __invoke(string $term, int $page, int $size): CarsPaginatedQueryResult
     {
         if ($page < 1) {
             throw new InputException('Invalid page number');

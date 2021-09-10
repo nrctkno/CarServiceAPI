@@ -6,7 +6,7 @@ namespace Domain\Common\Collection;
 
 use JsonSerializable;
 
-class PaginatedQueryResult implements JsonSerializable
+class PaginatedQueryResult implements JsonSerializable, QueryResultInterface
 {
 
     function __construct(
@@ -15,7 +15,7 @@ class PaginatedQueryResult implements JsonSerializable
         private int $limit,
         private int $count
     ) {
-        //ToDO: aserciones
+        //ToDO: asertions
     }
 
     public function getRecords()

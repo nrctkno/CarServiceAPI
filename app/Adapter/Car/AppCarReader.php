@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Adapter\Car;
 
-use Domain\Common\Collection\PaginatedQueryResult;
 use Domain\Car\Port\CarReader;
+use Domain\Car\Collection\CarsPaginatedQueryResult;
 
 class AppCarReader implements CarReader
 {
 
-    function find(string $term, int $page, int $limit): PaginatedQueryResult
+    function find(string $term, int $page, int $limit): CarsPaginatedQueryResult
     {
         $offset = ($page - 1) * $limit;
 
@@ -31,7 +31,7 @@ class AppCarReader implements CarReader
             ->skip($offset)->take($limit)
             ->get()->toArray();
 
-        return new PaginatedQueryResult($records, $page, $limit, $count);
+        return new CarsPaginatedQueryResult($records, $page, $limit, $count);
     }
 
     protected function table()

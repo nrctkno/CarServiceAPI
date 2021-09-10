@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Domain\Car\Port;
 
-use Domain\Common\Collection\PaginatedQueryResult;
+use Domain\Car\Collection\CarsPaginatedQueryResult;
 
 interface CarReader
 {
 
-    function find(string $term, int $page, int $limit): PaginatedQueryResult;
+    function find(string $term, int $page, int $limit): CarsPaginatedQueryResult;
 }

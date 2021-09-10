@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Response;
 
-use Domain\Common\Collection\PaginatedQueryResult;
+use Domain\Common\Collection\QueryResultInterface;
 
 class QueryResponse
 {
 
-    public static function with(PaginatedQueryResult $data): array
+    public static function with(QueryResultInterface $data): array
     {
         return [
             'status' => 'ok',
