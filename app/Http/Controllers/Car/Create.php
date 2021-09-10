@@ -12,6 +12,15 @@ class Create extends Action
 
     function __invoke(Request $request, CreateCar $createCar)
     {
+        $this->validate($request, [
+            'owner' => ['required', 'numeric'],
+            'brand' => ['required', 'max:20'],
+            'model' => ['required', 'max:20'],
+            'year' => ['required', 'numeric'],
+            'plate' => ['required', 'max:9'],
+            'colour' => ['required', 'max:20'],
+        ]);
+
         $result = $createCar(
             $request->get('owner'),
             $request->get('brand'),

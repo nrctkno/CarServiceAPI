@@ -12,6 +12,10 @@ class Create extends Action
 
     function __invoke(int $id, Request $request, CreateCarService $createCarService)
     {
+        $this->validate($request, [
+            'services' => ['required', 'array'],
+        ]);
+
         $result = $createCarService(
             $id,
             $request->get('services')

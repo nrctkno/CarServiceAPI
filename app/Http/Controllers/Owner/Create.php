@@ -12,6 +12,11 @@ class Create extends Action
 
     function __invoke(Request $request, CreateOwner $createOwner)
     {
+        $this->validate($request, [
+            'name' => ['required', 'max:50'],
+            'surname' => ['required', 'max:50'],
+        ]);
+
         $result = $createOwner(
             $request->get('name'),
             $request->get('surname')
